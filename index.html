@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Chef Bot · Recipe Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background texture -->
+    <div class="bg-texture"></div>
+
+    <div class="app-wrapper">
+
+        <!-- Sidebar / Header -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <div class="logo-area">
+                    <div class="logo-icon">🍳</div>
+                    <h1 class="logo-title">Chef <em>Bot</em></h1>
+                    <p class="logo-sub">Your Personal Recipe Assistant</p>
+                </div>
+
+                <nav class="quick-links">
+                    <p class="nav-label">Quick Suggestions</p>
+                    <button class="quick-btn" onclick="sendQuick('Show me all recipes')">📋 All Recipes</button>
+                    <button class="quick-btn" onclick="sendQuick('Show me easy recipes')">⚡ Quick & Easy</button>
+                    <button class="quick-btn" onclick="sendQuick('Vegetarian options')">🥦 Vegetarian</button>
+                    <button class="quick-btn" onclick="sendQuick('I want pasta')">🍝 Pasta</button>
+                    <button class="quick-btn" onclick="sendQuick('I want curry')">🍛 Curry</button>
+                    <button class="quick-btn" onclick="sendQuick('I want dessert')">🍫 Dessert</button>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p>Ask me about a dish, tell me what's in your fridge, or explore recipes by type.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="header-left">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Chef Bot is ready to cook</span>
+                </div>
+                <button class="clear-btn" onclick="clearChat()">Clear chat</button>
+            </header>
+
+            <div class="messages-container" id="messages">
+                <!-- Welcome message injected by JS -->
+            </div>
+
+            <div class="input-area">
+                <div class="input-row">
+                    <input
+                        type="text"
+                        id="userInput"
+                        class="chat-input"
+                        placeholder="Ask me anything... 'What can I make with tomatoes?'"
+                        autocomplete="off"
+                        onkeydown="handleKey(event)"
+                    />
+                    <button class="send-btn" onclick="sendMessage()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-hint">Try: "pasta", "I have chicken and lemon", "easy recipes", "vegetarian"</p>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
